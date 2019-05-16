@@ -1,12 +1,8 @@
-# leaflet-map-simple
-A simple Leaflet map template for new users to copy, modify, and experiment
+# Pruebas de Leaflet en Github
+Pruebas con leaflet
 
-## Link to my live map (replace with link to your site)
+## Enlace al mapa
 
-https://datavizforall.github.io/leaflet-map-simple
+https://alonsocortes.github.io/leaflet-map-simple/index.html
 
-## Create your own version
-- See video with step-by-step tutorial at https://datavizforall.org
 
-## Learn more
-- Jack Dougherty and contributors, *Data Visualization For All*, a free textbook and online course, Trinity College, Hartford CT, http://DataVizForAll.org
