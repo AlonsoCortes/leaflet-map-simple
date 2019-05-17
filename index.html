@@ -13,12 +13,6 @@
   integrity="sha384-6rCYjRgWDEI2RlZxiVihj1WIZB/uvFiRCGpavTVgFrSPDL0Bk1AiqCW+mmv5h0LP"
   crossorigin="anonymous"></script>
   
-  <!-- Load Omnivore plugin to convert CSV to GeoJSON format -->
-  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
-
- <!-- Cargar jQuery, sirve para cargar el GeoJSON -->	  
-  <script src="jquery-2.1.1.min.js"></script>	
-	
   <!-- Position the map and title with Cascading Style Sheet (.css) -->
   <style>
   body { margin:0; padding:0; }
@@ -48,7 +42,25 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'});
 
 //Cargar GeoJSON
-$.getJSON("CDMX_Hex.geojson",function(hoodData){
+  $.getJSON("CDMX_Hex.geojson", function (data) {   // insert pathname to your local directory file
+    var geoJsonLayer = L.geoJson(data, {
+      style: function (feature) {
+        return {
+          'color': 'red',
+          'weight': 2,
+          'fillColor': '#fff',
+          'fillOpacity': 0.2
+        }
+      },
+      onEachFeature: function( feature, layer) {
+        layer.bindPopup(feature.properties.denpob) // change 'name' to match your geojson property labels
+      }
+    }).addTo(map);  // insert ".addTo(map)" to display layer by default
+    controlLayers.addOverlay(geoJsonLayer, 'CDMX');  // insert your 'Title' to add to legend
+  });
+	  
+	  
+/* $.getJSON("CDMX_Hex.geojson",function(hoodData){
   L.geoJson( hoodData  , {
     style: function(feature){
       var fillColor,
@@ -66,7 +78,7 @@ $.getJSON("CDMX_Hex.geojson",function(hoodData){
     }
   }  ).addTo(map);
 });
-	  
+*/	  
 	  
 // Inicialización del mapa
 var map = L.map('map', {
