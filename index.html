@@ -42,6 +42,27 @@ var terrain = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}
     attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'}); 
 var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'});
+
+//Cargar GeoJSON
+$.getJSON("CDMX_Hex.geojson",function(hoodData){
+  L.geoJson( hoodData  , {
+    style: function(feature){
+      var fillColor,
+          densidad = feature.properties.denpob;
+      if ( denpob >  253.2304 ) fillColor = "#fde725";
+      else if ( denpob > 177.13 ) fillColor = "#5dc962";
+      else if ( denpob > 112.24 ) fillColor = "#20908d";
+      else if ( denpob > 51.76 ) fillColor = "#3a528b";
+      else if ( denpob > 0.03 ) fillColor = "#440154";
+      else fillColor = "#f7f7f7";  // no data
+      return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .6 };
+    },
+    onEachFeature: function( feature, layer ){
+      layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.density + "Densidad de habitantes por hectárea" )
+    }
+  }  ).addTo(map);
+});
+	  
 	  
 // Inicialización del mapa
 var map = L.map('map', {
