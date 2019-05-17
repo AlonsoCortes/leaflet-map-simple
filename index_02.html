@@ -33,9 +33,15 @@
   <script>
   
   //Crear variables para mapa base
-  var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: 'Mapa Data &copy; OpenStreetMap contributors'});
-
+	  
+var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'});
+	  
+var terreno = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'});	  
+	
 var transport = L.tileLayer('https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=346585a3594c4671979ebe96e8cf3a8d', {
 	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	apikey: '<346585a3594c4671979ebe96e8cf3a8d>',	maxZoom: 22});
@@ -52,7 +58,7 @@ var EsriSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/
 var map = L.map('map', {
 	center:[22.021667,-102.356389],
 	zoom:6,
-	layers:[osm, transport, EsriSat, tonerLite]
+	layers:[osm, transport, EsriSat, tonerLite, terreno, ligth]
 });
 
 //Agrupar capas base
@@ -60,7 +66,9 @@ var baseMaps = {
 "Open Street Map": osm,
 "Transporte": transport,
 "ESRI Satelite": EsriSat,
-"Gris claro": tonerLite,
+"Toner lite": tonerLite,
+"Carto light": ligth,	
+"Terreno": terreno,
 }
 
 //Agregar controlador al mapa
