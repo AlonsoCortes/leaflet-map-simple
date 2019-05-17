@@ -42,6 +42,13 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'});
 
 //Cargar GeoJSON
+// loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
+var cdmx_hex = $.getJSON("CDMX_Hex.geojson",function(data){
+// L.geoJson function is used to parse geojson file and load on to map
+L.geoJson(data);
+});
+	  
+/*	  
   $.getJSON("CDMX_Hex.geojson", function (data) {   // insert pathname to your local directory file
     var geoJsonLayer = L.geoJson(data, {
       style: function (feature) {
@@ -60,7 +67,7 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
   });
 	  
 	  
-/* $.getJSON("CDMX_Hex.geojson",function(hoodData){
+$.getJSON("CDMX_Hex.geojson",function(hoodData){
   L.geoJson( hoodData  , {
     style: function(feature){
       var fillColor,
