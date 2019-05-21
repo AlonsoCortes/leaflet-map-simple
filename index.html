@@ -61,7 +61,7 @@ var cdmx = L.geoJson(null, {
     onEachFeature: function( feature, layer ){
       layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.density + "Densidad de habitantes por hectárea" )
     }
-  }  ));
+  });
 	  
 var limite = L.geoJson(null);
 
