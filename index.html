@@ -6,12 +6,16 @@
   <meta charset="utf-8">
 
   <!-- Cargar Leaflet: instructions at http://leafletjs.com/download.html -->
+//Cargar .css
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
   integrity="sha384-Zh+y1U8o6/7ni8Mp8szvUfZjGeKKS10CGH3IlD6L1X+XwzYgQ1llOjw/Wslc0cma"
   crossorigin="anonymous">
+// Cargar .js
   <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
   integrity="sha384-6rCYjRgWDEI2RlZxiVihj1WIZB/uvFiRCGpavTVgFrSPDL0Bk1AiqCW+mmv5h0LP"
   crossorigin="anonymous"></script>
+// Cargar jquery
+    <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
   
   <!-- Position the map and title with Cascading Style Sheet (.css) -->
   <style>
@@ -42,34 +46,14 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'});
 
 //Cargar GeoJSON
-var geojsonLayer = new L.GeoJSON.AJAX("CDMX_Hex.geojson");
+var cdmx = L.geoJson(null, {
+	onEachFeature: popup
+});
+
+$.getJSON("CDMX_Hex.geojson", function (data) {
+	cdmx.addData(data)
 	  
 /*	  
-// loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
-var cdmx_hex = $.getJSON("CDMX_Hex.geojson",function(data){
-// L.geoJson function is used to parse geojson file and load on to map
-L.geoJson(data);
-});
-	  
-	  
-  $.getJSON("CDMX_Hex.geojson", function (data) {   // insert pathname to your local directory file
-    var geoJsonLayer = L.geoJson(data, {
-      style: function (feature) {
-        return {
-          'color': 'red',
-          'weight': 2,
-          'fillColor': '#fff',
-          'fillOpacity': 0.2
-        }
-      },
-      onEachFeature: function( feature, layer) {
-        layer.bindPopup(feature.properties.denpob) // change 'name' to match your geojson property labels
-      }
-    }).addTo(map);  // insert ".addTo(map)" to display layer by default
-    controlLayers.addOverlay(geoJsonLayer, 'CDMX');  // insert your 'Title' to add to legend
-  });
-	  
-	  
 $.getJSON("CDMX_Hex.geojson",function(hoodData){
   L.geoJson( hoodData  , {
     style: function(feature){
@@ -88,13 +72,13 @@ $.getJSON("CDMX_Hex.geojson",function(hoodData){
     }
   }  ).addTo(map);
 });
-*/	  
 	  
+*/	  
 // Inicialización del mapa
 var map = L.map('map', {
 	center:[19.408849, -99.136738],
 	zoom:12,
-	layers:[transport, EsriSat,terrain, light]
+	layers:[transport, EsriSat,terrain, light, cdmx]
 });
 //Agrupar capas base
 var baseMaps = {
