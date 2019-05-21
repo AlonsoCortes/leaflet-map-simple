@@ -47,10 +47,15 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
 
 //Cargar GeoJSON
 var cdmx = L.geoJson(null);
+var limite = L.geoJson(null);
 
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)
 });
+
+$.getJSON("Limite_CDMX.geojson", function (data) {
+	limite.addData(data)
+});	  
 	  
 /*	  
 $.getJSON("CDMX_Hex.geojson",function(hoodData){
