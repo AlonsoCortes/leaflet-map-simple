@@ -73,7 +73,7 @@ var cdmx = L.geoJson(null, {
       return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .4 };
     },
     onEachFeature: function( feature, layer ){
-      layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.DenPob + "Densidad de habitantes por hectárea" )
+      layer.bindPopup( "feature.properties.DenPob + " habitantes por hectárea" )
     }
 });
 
