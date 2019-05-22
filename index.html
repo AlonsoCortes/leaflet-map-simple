@@ -77,6 +77,7 @@ var cdmx = L.geoJson(null, {
     }
 });
 
+/*	  
 var red_metro = L.geoJson(null, {
 	style: function(feature){
 		switch (feature.properties.id_linea){
@@ -94,16 +95,16 @@ var red_metro = L.geoJson(null, {
 		}
 	}
 });
-	    
+*/	    
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
 
 $.getJSON("Limite_CDMX.geojson", function (data) {
 	limite.addData(data)});	  
-
+/*
 $.getJSON("Red_STCMetro.geojson", function (data) {
-	red_metro.addData(data)});	  
+	red_metro.addData(data)});	*/  
 	  
 // Inicialización del mapa
 var map = L.map('map', {
