@@ -72,11 +72,17 @@ var cdmx = L.geoJson(null, {
       else fillColor = "#f7f7f7";  // no data
       return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .4 };
     },
-    onEachFeature: function( feature, layer ){
+	 onEachFeature: function( feature, layer ){
+      layer.bindPopup( "<strong>" + "Densidad" + "</strong><br/>" + feature.properties.DenPob + " habitantes por hectárea" )
+    }
+  }  );
+});
+	
+   /* onEachFeature: function( feature, layer ){
       layer.bindPopup( "<strong>" + "Densidad" + "</strong><br/>+"feature.properties.DenPob + " habitantes por hectárea" )
     }
 };
-
+*/
 /*	  
 var red_metro = L.geoJson(null, {
 	style: function(feature){
