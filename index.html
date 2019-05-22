@@ -62,16 +62,16 @@ var cdmx = L.geoJson(null, {
       layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.density + "Densidad de habitantes por hectárea" )
     }
 });
+
+var myStyle = {
+    "fillOpacity": 0,
+    "color": "#414244",
+    "weight": 5,
+    "opacity": 1
+};	  
 	  
 var limite = L.geoJson(null, {
-	style: function(feature) {
-	fillColor: 'white',
-        weight: 2,
-        opacity: 1,
-        color: 'black',  //Outline color
-        fillOpacity: 0
-    };
-});
+	style: myStyle })
 
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)
