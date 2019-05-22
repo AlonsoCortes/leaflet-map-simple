@@ -49,7 +49,7 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
 var cdmx = L.geoJson(null, {
     style: function(feature){
       var fillColor,
-          denpob = feature.properties.denpob;
+          denpob = feature.properties.DenPob;
       if ( denpob >  253.2304 ) fillColor = "#fde725";
       else if ( denpob > 177.13 ) fillColor = "#5dc962";
       else if ( denpob > 112.24 ) fillColor = "#20908d";
