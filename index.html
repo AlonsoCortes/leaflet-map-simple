@@ -105,8 +105,7 @@ var red_metro = L.geoJson(null, {
 var est_metro = L.geoJson(null,
 	onEachFeature: function( feature, layer ){
       	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )
-    }
-  }  );
+    });
 	  
 //Traer el frente la capa de límite
 red_metro.bringToFront();
