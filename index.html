@@ -100,9 +100,13 @@ var baseMaps = {
 "Carto light": light,
 }
 
+//Agrupar Overlay layers
+var overlays = {
+    "Densidad poblacional": cdmx
+};
+
 //Agregar controlador al mapa
-L.control.layers(baseMaps).addTo(map);
-L.control.layers(cdmx).addTo(map);
+L.control.layers(baseMaps, overlays).addTo(map);
 
   </script>
 </body>
