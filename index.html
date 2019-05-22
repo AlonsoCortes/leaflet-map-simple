@@ -127,10 +127,10 @@ $.getJSON("Estaciones_STCMetro.geojson", function (data) {
 	est_metro.addData(data)});
 	  
 //Ordenar las capas en orden
-cdmx.bringToFront();
-red_metro.bringToFront();	  
-est_metro.bringToFront();
-limite.bringToFront();	  
+limite.bringToFront();
+est_metro.bringToFront();	  
+red_metro.bringToFront();
+cdmx.bringToFront();	  
 
 // Inicialización del mapa
 var map = L.map('map', {
