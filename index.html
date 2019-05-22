@@ -59,7 +59,8 @@ var limite = L.geoJson(null, {
 	style: myStyle })
 //Traer el frente la capa de límite
 limite.bringToFront();
-	  
+
+//Variable con los hexagonos tematizados de la CDMX	  
 var cdmx = L.geoJson(null, {
     style: function(feature){
       var fillColor,
@@ -80,9 +81,8 @@ var cdmx = L.geoJson(null, {
       layer.bindPopup( "<strong>" + "Densidad" + "</strong><br/>+"feature.properties.DenPob + " habitantes por hectárea" )
     }
 };
-
-var red_metro = L.geoJson(null);
-*/	  
+*/
+// Variable para la red del metro tematizada	  
 var red_metro = L.geoJson(null, {
 	style: function(feature){
 		switch (feature.properties.id_linea){
@@ -100,6 +100,13 @@ var red_metro = L.geoJson(null, {
 		}
 	}
 });
+
+//Variable para las estaciones del metro
+var est_metro = L.geoJson(null,
+	onEachFeature: function( feature, layer ){
+      	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )
+    }
+  }  );
 	  
 //Traer el frente la capa de límite
 red_metro.bringToFront();
@@ -107,18 +114,18 @@ red_metro.bringToFront();
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
-
 $.getJSON("Limite_CDMX.geojson", function (data) {
-	limite.addData(data)});	  
-
+	limite.addData(data)});
 $.getJSON("Red_STCMetro.geojson", function (data) {
-	red_metro.addData(data)});	 
+	red_metro.addData(data)});	
+$.getJSON("Estaciones_STCMetro.geojson", function (data) {
+	est_metro.addData(data)});
 	  
 // Inicialización del mapa
 var map = L.map('map', {
 	center:[19.408849, -99.136738],
 	zoom:12,
-	layers:[transport, EsriSat,terrain, light, cdmx,red_metro, limite]
+	layers:[transport, EsriSat,terrain, light, cdmx,red_metro, est_metro, limite]
 });
 //Agrupar capas base
 var baseMaps = {
@@ -131,7 +138,8 @@ var baseMaps = {
 //Agrupar Overlay layers
 var overlays = {
     "Densidad poblacional": cdmx,
-	"Red SCT Metro": red_metro
+    "Red SCT Metro": red_metro,
+    "Estaciones SCT Metro": est_metro
 };
 
 //Agregar controlador al mapa
