@@ -56,7 +56,9 @@ var myStyle = {
 };	  
 	  
 var limite = L.geoJson(null, {
-	style: myStyle })	  
+	style: myStyle })
+//Traer el frente la capa de límite
+limite.bringToFront();
 	  
 var cdmx = L.geoJson(null, {
     style: function(feature){
