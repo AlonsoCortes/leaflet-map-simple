@@ -54,7 +54,7 @@ var myStyle = {
     "weight": 5,
     "opacity": 1
 };
-
+/*
 var est_metro_style = {
     radius: 5,
     fillColor: "#FFFFFF",
@@ -62,7 +62,7 @@ var est_metro_style = {
     weight: 1.5,
     opacity: 1,
     fillOpacity: 1
-};
+};*/
 var col_style = {
 	fillcolor:"FFFFFF",
 	color: "#000000",
@@ -121,6 +121,21 @@ var red_metro = L.geoJson(null, {
 
 //Variable para las estaciones del metro
 var est_metro = L.geoJson(null, {
+		style: function(feature){
+		switch (feature.properties.nombreline){
+			case '1': return {color:'#FEA3FF'};
+			case '2': return {color:'#1446D6'};
+			case '3': return {color:'#BCDA13'};
+			case '4': return {color:'#86DADA'};
+			case '5': return {color:'#F7FF00'};
+			case '6': return {color:'#FF0000'};
+			case '7': return {color:'#FFC100'};
+			case '8': return {color:'#20AB1C'};
+			case '9': return {color:'#854E0C'};
+			case 'A': return {color:'#DE25F0'};
+			case 'B': return {color:'#98D7BC'}; 
+		}
+		},
 	pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, est_metro_style)},
 	onEachFeature: function( feature, layer ){
       	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta + ", Línea " +feature.properties.nombreline )}
