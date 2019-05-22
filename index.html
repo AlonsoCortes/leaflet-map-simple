@@ -53,8 +53,18 @@ var myStyle = {
     "color": "#414244",
     "weight": 5,
     "opacity": 1
+};
+
+var est_metro_style = {
+    radius: 8,
+    fillColor: "#FFFFFF",
+    color: "#000000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.5
 };	  
-	  
+
+// Crear variables para los GeoJSON
 var limite = L.geoJson(null, {
 	style: myStyle })
 //Traer el frente la capa de límite
@@ -104,9 +114,12 @@ var red_metro = L.geoJson(null, {
 //Variable para las estaciones del metro
 var est_metro = L.geoJson(null, {
 	onEachFeature: function( feature, layer ){
+	pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, est_metro_style);
+    }
       	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )
-}
-});
+    }
+	});
 	  
 //Traer el frente la capa de límite
 red_metro.bringToFront();
