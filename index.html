@@ -73,18 +73,37 @@ var cdmx = L.geoJson(null, {
       return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .4 };
     },
     onEachFeature: function( feature, layer ){
-      layer.bindPopup( "feature.properties.DenPob + " habitantes por hectárea" )
+      layer.bindPopup( "<strong>" + "Densidad" + "</strong><br/>+"feature.properties.DenPob + " habitantes por hectárea" )
     }
 });
 
-$.getJSON("CDMX_Hex.geojson", function (data) {
-	cdmx.addData(data)
+var red_metro = L.geoJson(null, {
+	style: function(feature){
+		switch (feature.properties.id_linea){
+			case '1': return {color:'#FEA3FF'};
+			case '2': return {color:'#1446D6'};
+			case '3': return {color:'#BCDA13'};
+			case '4': return {color:'#86DADA'};
+			case '5': return {color:'#F7FF00'};
+			case '6': return {color:'#FF0000'};
+			case '7': return {color:'#FFC100'};
+			case '8': return {color:'#20AB1C'};
+			case '9': return {color:'#854E0C'};
+			case 'A': return {color:'#DE25F0'};
+			case 'B': return {color:'#98D7BC'};
+		}
+	}
 });
+	    
+//Cargar el GeoJSON a las variables	    
+$.getJSON("CDMX_Hex.geojson", function (data) {
+	cdmx.addData(data)});
 
 $.getJSON("Limite_CDMX.geojson", function (data) {
-	limite.addData(data)
-});	  
-	  
+	limite.addData(data)});	  
+
+$.getJSON("Red_STCMetro.geojson", function (data) {
+	red_metro.addData(data)});	  
 	  
 // Inicialización del mapa
 var map = L.map('map', {
