@@ -106,6 +106,9 @@ var red_metro = L.geoJson(null, {
 			case 'A': return {color:'#DE25F0'};
 			case 'B': return {color:'#98D7BC'}; 
 		}
+		onEachFeature: function( feature, layer ){
+      		layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>"+ "Línea " + feature.properties.id_linea  )
+    }
 	}
 });
 
