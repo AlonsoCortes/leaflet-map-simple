@@ -127,7 +127,7 @@ var est_metro = L.geoJson(null, {
 	});
 //Variable para las colonias
 var col = L.geoJson(null, {
-	style: col_style}, 
+	style: col_style, 
 	onEachFeature: function( feature, layer ){
 	layer.bindPopup( "<strong>" + "COLONIA" + "</strong><br/>"+
 	feature.properties.SETT_NAME + "POBLACIÓN: " + feature.properties.Sum_POB1 + " HABITANTES" )}
