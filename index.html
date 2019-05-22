@@ -100,7 +100,9 @@ var red_metro = L.geoJson(null, {
 		}
 	}
 });
-	    
+//Traer el frente la capa de límite
+red_metro.bringToFront();
+	  
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
@@ -115,7 +117,7 @@ $.getJSON("Red_STCMetro.geojson", function (data) {
 var map = L.map('map', {
 	center:[19.408849, -99.136738],
 	zoom:12,
-	layers:[transport, EsriSat,terrain, light, cdmx, limite]
+	layers:[transport, EsriSat,terrain, light, cdmx,red_metro, limite]
 });
 //Agrupar capas base
 var baseMaps = {
@@ -127,7 +129,8 @@ var baseMaps = {
 
 //Agrupar Overlay layers
 var overlays = {
-    "Densidad poblacional": cdmx
+    "Densidad poblacional": cdmx,
+	"Red SCT Metro": red_metro
 };
 
 //Agregar controlador al mapa
