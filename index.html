@@ -114,11 +114,9 @@ var red_metro = L.geoJson(null, {
 //Variable para las estaciones del metro
 var est_metro = L.geoJson(null, {
 	onEachFeature: function( feature, layer ){
-	pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, est_metro_style);
-    }
-      	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )
-    }
+      	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )},
+		pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, est_metro_style)}
 	});
 	  
 //Traer el frente la capa de límite
