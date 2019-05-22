@@ -67,8 +67,6 @@ var est_metro_style = {
 // Crear variables para los GeoJSON
 var limite = L.geoJson(null, {
 	style: myStyle })
-//Traer el frente la capa de límite
-limite.bringToFront();
 
 //Variable con los hexagonos tematizados de la CDMX	  
 var cdmx = L.geoJson(null, {
@@ -118,9 +116,6 @@ var est_metro = L.geoJson(null, {
       	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )}
 	});
 	  
-//Traer el frente la capa de límite
-red_metro.bringToFront();
-	  
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
@@ -131,6 +126,12 @@ $.getJSON("Red_STCMetro.geojson", function (data) {
 $.getJSON("Estaciones_STCMetro.geojson", function (data) {
 	est_metro.addData(data)});
 	  
+//Ordenar las capas en orden
+cdmx.bringToFront();
+red_metro.bringToFront();	  
+est_metro.bringToFront();
+limite.bringToFront();	  
+
 // Inicialización del mapa
 var map = L.map('map', {
 	center:[19.408849, -99.136738],
