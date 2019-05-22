@@ -129,9 +129,9 @@ var est_metro = L.geoJson(null, {
 var col = L.geoJson(null, {
 	style: col_style}, 
 	onEachFeature: function( feature, layer ){
-	layer.bindPopup( "<strong>" + "COLONIA" + "</strong><br/>"+ feature.properties.SETT_NAME + "POBLACIÓN: " + feature.properties.Sum_POB1 + " HABITANTES" )}
-	  
-	  
+	layer.bindPopup( "<strong>" + "COLONIA" + "</strong><br/>"+
+	feature.properties.SETT_NAME + "POBLACIÓN: " + feature.properties.Sum_POB1 + " HABITANTES" )}
+	});
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
