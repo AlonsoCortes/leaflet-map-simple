@@ -56,7 +56,7 @@ var myStyle = {
 };
 
 var est_metro_style = {
-    radius: 8,
+    radius: 3,
     fillColor: "#FFFFFF",
     color: "#000000",
     weight: 1,
@@ -113,10 +113,9 @@ var red_metro = L.geoJson(null, {
 
 //Variable para las estaciones del metro
 var est_metro = L.geoJson(null, {
+	pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, est_metro_style)},
 	onEachFeature: function( feature, layer ){
-      	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )},
-		pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, est_metro_style)}
+      	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta )}
 	});
 	  
 //Traer el frente la capa de límite
