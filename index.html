@@ -47,7 +47,7 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
 
 //Cargar capas GeoJSON
 	  
-//Estilo para la capa del límite de la cdmx
+//Estilo para ciertas capas
 var myStyle = {
     "fillOpacity": 0,
     "color": "#414244",
@@ -62,7 +62,14 @@ var est_metro_style = {
     weight: 1.5,
     opacity: 1,
     fillOpacity: 1
-};	  
+};
+var col_style = {
+	fillcolor:"#FFFFFF",
+	color: "#000000",
+	weight: 1.5,
+	opacity: 1,
+	fillOpacity: 0
+};
 
 // Crear variables para los GeoJSON
 var limite = L.geoJson(null, {
@@ -118,6 +125,12 @@ var est_metro = L.geoJson(null, {
 	onEachFeature: function( feature, layer ){
       	layer.bindPopup( "<strong>" + "SCT Metro" + "</strong><br/>" + feature.properties.nombreesta + ", Línea " +feature.properties.nombreline )}
 	});
+//Variable para las colonias
+var col = L.geoJson(null, {
+	style: col_style}, 
+	onEachFeature: function( feature, layer ){
+	layer.bindPopup( "<strong>" + "COLONIA" + "</strong><br/>"+ feature.properties.SETT_NAME + "POBLACIÓN: " + feature.properties.Sum_POB1 + " HABITANTES" )}
+	  
 	  
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
@@ -128,6 +141,8 @@ $.getJSON("Red_STCMetro.geojson", function (data) {
 	red_metro.addData(data)});	
 $.getJSON("Estaciones_STCMetro.geojson", function (data) {
 	est_metro.addData(data)});
+$.getJSON("Colonias.geojson", function (data) {
+	col.addData(data)});
 	  
 //Ordenar las capas en orden
 est_metro.bringToFront();	  
@@ -137,7 +152,7 @@ limite.bringToFront();
 var map = L.map('map', {
 	center:[19.408849, -99.136738],
 	zoom:12,
-	layers:[transport, EsriSat,terrain, light, cdmx,red_metro, est_metro, limite]
+	layers:[transport, EsriSat,terrain, light, cdmx,red_metro, est_metro, col, limite]
 });
 //Agrupar capas base
 var baseMaps = {
@@ -152,6 +167,7 @@ var overlays = {
     "Estaciones SCT Metro": est_metro,
     "Red SCT Metro": red_metro,
     "Densidad poblacional": cdmx,
+    "Colonias": col,
 };
 
 //Agregar controlador al mapa
