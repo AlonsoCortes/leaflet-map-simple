@@ -46,6 +46,18 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'});
 
 //Cargar GeoJSON
+	  
+//Estilo para la capa del límite de la cdmx
+var myStyle = {
+    "fillOpacity": 0,
+    "color": "#414244",
+    "weight": 5,
+    "opacity": 1
+};	  
+	  
+var limite = L.geoJson(null, {
+	style: myStyle })	  
+	  
 var cdmx = L.geoJson(null, {
     style: function(feature){
       var fillColor,
@@ -62,16 +74,6 @@ var cdmx = L.geoJson(null, {
       layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.DenPob + "Densidad de habitantes por hectárea" )
     }
 });
-//Estilo para la capa del límite de la cdmx
-var myStyle = {
-    "fillOpacity": 0,
-    "color": "#414244",
-    "weight": 5,
-    "opacity": 1
-};	  
-	  
-var limite = L.geoJson(null, {
-	style: myStyle })
 
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)
