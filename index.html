@@ -63,6 +63,12 @@ var est_metro_style = {
     opacity: 1,
     fillOpacity: 0.6
 };
+var tiendas_style = L.icon({
+	iconUrl: 'dice (2).png',
+	iconSize: [38, 95],iconAnchor: [22, 94],
+	popupAnchor: [-3, -76],
+});	
+
 var col_style = {
 	fillcolor:"FFFFFF",
 	color: "#000000",
@@ -131,6 +137,13 @@ var col = L.geoJson(null, {
 	onEachFeature: function( feature, layer ){
 	layer.bindPopup( "<strong>" + "COLONIA" + "</strong><br/>"+
 	feature.properties.SETT_NAME + ", POBLACIÓN: " + feature.properties.Sum_POB1 + " HABITANTES" )}
+	});
+
+//Variable para las tiendas
+var tiendas =L.geoJson(null, {
+	pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, tiendas_style)},
+	onEachFeature: function( feature, layer ){
+      	layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.link)}
 	});
 	  
 //Cargar el GeoJSON a las variables	    
