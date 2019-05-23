@@ -63,12 +63,19 @@ var est_metro_style = {
     opacity: 1,
     fillOpacity: 0.6
 };
+// Estilo para capa de tiendas con icono en particular	  
 var tiendas_style = L.icon({
 	iconUrl: 'dice (2).png',
 	iconSize: [38, 95],
 	iconAnchor: [22, 94],
 	popupAnchor: [-3, -76],
-});	
+});
+	  
+function estiloIcon(feature, latlng) {
+	return L.marker(latlng, {
+		icon: tiendas_style
+	})
+};	  
 
 var col_style = {
 	fillcolor:"FFFFFF",
@@ -142,7 +149,7 @@ var col = L.geoJson(null, {
 
 //Variable para las tiendas
 var tiendas =L.geoJson(null, {
-	pointToLayer: tiendas_style,
+	pointToLayer: estiloIcon,
 	onEachFeature: function( feature, layer ){
 		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.link)}
 	});
