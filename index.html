@@ -65,7 +65,8 @@ var est_metro_style = {
 };
 var tiendas_style = L.icon({
 	iconUrl: 'dice (2).png',
-	iconSize: [38, 95],iconAnchor: [22, 94],
+	iconSize: [38, 95],
+	iconAnchor: [22, 94],
 	popupAnchor: [-3, -76],
 });	
 
@@ -141,9 +142,9 @@ var col = L.geoJson(null, {
 
 //Variable para las tiendas
 var tiendas =L.geoJson(null, {
-	pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, tiendas_style)},
+	pointToLayer: tiendas_style,
 	onEachFeature: function( feature, layer ){
-      	layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.link)}
+		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.link)}
 	});
 	  
 //Cargar el GeoJSON a las variables	    
