@@ -48,7 +48,7 @@ var light = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
 //Cargar capas GeoJSON
 	  
 //Estilo para ciertas capas
-var myStyle = {
+var limite_style = {
     "fillOpacity": 0,
     "color": "#414244",
     "weight": 5,
@@ -73,7 +73,7 @@ var col_style = {
 
 // Crear variables para los GeoJSON
 var limite = L.geoJson(null, {
-	style: myStyle })
+	style: limite_style })
 
 //Variable con los hexagonos tematizados de la CDMX	  
 var cdmx = L.geoJson(null, {
@@ -132,6 +132,7 @@ var col = L.geoJson(null, {
 	layer.bindPopup( "<strong>" + "COLONIA" + "</strong><br/>"+
 	feature.properties.SETT_NAME + ", POBLACIÓN: " + feature.properties.Sum_POB1 + " HABITANTES" )}
 	});
+	  
 //Cargar el GeoJSON a las variables	    
 $.getJSON("CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
@@ -152,8 +153,7 @@ limite.bringToFront();
 var map = L.map('map', {
 	center:[19.349519, -99.152265],
 	zoom:10,
-	layers:[transport, EsriSat,terrain, light, limite]
-});
+	layers:[transport, EsriSat,terrain, light, limite]});
 //Agrupar capas base
 var baseMaps = {
 "ESRI Satelite": EsriSat,
