@@ -157,6 +157,8 @@ $.getJSON("Estaciones_STCMetro.geojson", function (data) {
 	est_metro.addData(data)});
 $.getJSON("Colonias.geojson", function (data) {
 	col.addData(data)});
+$.getJSON("tiendas.geojson", function (data) {
+	tiendas.addData(data)});	  
 	  
 //Ordenar las capas en orden
 est_metro.bringToFront();	  
@@ -177,11 +179,12 @@ var baseMaps = {
 
 //Agrupar Overlay layers
 var overlays = {
+    "Tiendas": tiendas	
     "Estaciones SCT Metro": est_metro,
     "Red SCT Metro": red_metro,
     "Densidad poblacional": cdmx,
     "Colonias": col,
-};
+    };
 
 //Agregar controlador al mapa
 L.control.layers(baseMaps, overlays).addTo(map);
