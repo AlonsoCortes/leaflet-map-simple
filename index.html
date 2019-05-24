@@ -158,7 +158,7 @@ var col = L.geoJson(null, {
 var tiendas =L.geoJson(null, {
 	pointToLayer: estiloIcon,
 	onEachFeature: function( feature, layer ){
-		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + <a href=" feature.properties.link" >)}
+		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + '<a href=" feature.properties.link" >')}
 	});
 	  
 //Cargar el GeoJSON a las variables	    
