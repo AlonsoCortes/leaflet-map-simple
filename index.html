@@ -208,6 +208,14 @@ var overlays = {
 L.control.layers(baseMaps, overlays).addTo(map);
 
 //Agregar leyenda /simbologia de las capas
+function fillColor(d) {
+    return d > 253 ? '#fde725' :
+           d > 177  ? '#5dc962' :
+           d > 112  ? '#20908d' :
+           d > 51  ? '#3a528b' :
+           d > 0   ? '#440154' ;
+     }
+ 	  
 var legend = L.control({position: 'bottomleft'});
 
 legend.onAdd = function (map) {
