@@ -92,8 +92,8 @@ var limite = L.geoJson(null, {
 //Variable para capa de la ubicación de cada de amigos
 var amigos = L.geoJson(null, { 
 	onEachFeature: function( feature, layer ){
-		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong>)})
-});
+		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong>")}
+		});
 
 //Variable con los hexagonos tematizados de la CDMX	  
 var cdmx = L.geoJson(null, {
