@@ -89,6 +89,12 @@ var col_style = {
 var limite = L.geoJson(null, {
 	style: limite_style })
 
+//Variable para capa de la ubicación de cada de amigos
+var amigos = L.geoJson(null, { 
+	onEachFeature: function( feature, layer ){
+		layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>)})
+});
+
 //Variable con los hexagonos tematizados de la CDMX	  
 var cdmx = L.geoJson(null, {
     style: function(feature){
@@ -168,6 +174,8 @@ $.getJSON("Colonias.geojson", function (data) {
 	col.addData(data)});
 $.getJSON("tiendas.geojson", function (data) {
 	tiendas.addData(data)});	  
+$.getJSON("amigos.geojson", function (data) {
+	amigos.addData(data)});
 	  
 //Ordenar las capas en orden
 est_metro.bringToFront();	  
@@ -188,6 +196,7 @@ var baseMaps = {
 
 //Agrupar Overlay layers
 var overlays = {
+    "Amigos": amigos,
     "Tiendas": tiendas,	
     "Estaciones SCT Metro": est_metro,
     "Red SCT Metro": red_metro,
