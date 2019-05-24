@@ -195,6 +195,8 @@ var overlays = {
 //Agregar controlador al mapa
 L.control.layers(baseMaps, overlays).addTo(map);
 
+//Agregar escala metrica
+L.control.scale(<Control.Scale options> metric true).addTo(map);	  
   </script>
 </body>
 </html>
