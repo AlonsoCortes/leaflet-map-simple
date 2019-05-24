@@ -14,7 +14,7 @@
 { "type": "Feature", "properties": { "Name": "Kallisti", "link": "https:\/\/www.facebook.com\/kallistijuegosycolecciona" }, "geometry": { "type": "Point", "coordinates": [ -99.197222, 19.361333, 0.0 ] } },
 { "type": "Feature", "properties": { "Name": "Wontolla Games", "link": "https:\/\/www.facebook.com\/WontollaGames\/" }, "geometry": { "type": "Point", "coordinates": [ -99.0477387, 19.5034529, 0.0 ] } },
 { "type": "Feature", "properties": { "Name": "Quest Hobbies & Games", "link": "https:\/\/www.facebook.com\/questhobbiesandgames\/" }, "geometry": { "type": "Point", "coordinates": [ -99.1819991, 19.3742531, 0.0 ] } },
-{ "type": "Feature", "properties": { "Name": "Juegos Asgard", "link": "https:\/\/www.facebook.com\/juegosasgard\/" }, "geometry": { "type": "Point", "coordinates": [ -99.1687979, 19.3625041, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Juegos Asgard", "link": "https:\/\/www.facebook.com\/juegosasgard\/" }, "geometry": { "type": "Point", "coordinates": [ -99.156781,19.382376, 0.0 ] } },
 { "type": "Feature", "properties": { "Name": "Anam Store", "link": "https:\/\/www.facebook.com\/Anamjuegos\/" }, "geometry": { "type": "Point", "coordinates": [ -99.1246996, 19.499421, 0.0 ] } },
 { "type": "Feature", "properties": { "Name": "Master's Corps", "link": "https:\/\/www.facebook.com\/MastersCorpMx\/" }, "geometry": { "type": "Point", "coordinates": [ -99.1407456, 19.433346, 0.0 ] } },
 { "type": "Feature", "properties": { "Name": "La +Morra", "link": "https:\/\/www.facebook.com\/masMorra007\/" }, "geometry": { "type": "Point", "coordinates": [ -99.1402766, 19.4307246, 0.0 ] } },
