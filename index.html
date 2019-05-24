@@ -207,36 +207,6 @@ var overlays = {
 //Agregar controlador al mapa
 L.control.layers(baseMaps, overlays).addTo(map);
 
-//Agregar leyenda /simbologia de las capas
-function fillColor(d) {
-    return d > 253 ? '#fde725' :
-           d > 177  ? '#5dc962' :
-           d > 112  ? '#20908d' :
-           d > 51  ? '#3a528b' :
-           d > 0   ? '#440154' :
-     }
- 	  
-var legend = L.control({position: 'bottomleft'});
-
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0.03,51,112, 177,253],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + fillColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(map);
-
-	  
 //Agregar escala metrica
 L.control.scale().addTo(map);	  
   </script>
