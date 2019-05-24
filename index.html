@@ -162,19 +162,19 @@ var tiendas =L.geoJson(null, {
 	});
 	  
 //Cargar el GeoJSON a las variables	    
-$.getJSON("CDMX_Hex.geojson", function (data) {
+$.getJSON("GeoJson/CDMX_Hex.geojson", function (data) {
 	cdmx.addData(data)});
-$.getJSON("Limite_CDMX.geojson", function (data) {
+$.getJSON("GeoJson/Limite_CDMX.geojson", function (data) {
 	limite.addData(data)});
-$.getJSON("Red_STCMetro.geojson", function (data) {
+$.getJSON("GeoJson/Red_STCMetro.geojson", function (data) {
 	red_metro.addData(data)});	
-$.getJSON("Estaciones_STCMetro.geojson", function (data) {
+$.getJSON("GeoJson/Estaciones_STCMetro.geojson", function (data) {
 	est_metro.addData(data)});
-$.getJSON("Colonias.geojson", function (data) {
+$.getJSON("GeoJson/Colonias.geojson", function (data) {
 	col.addData(data)});
-$.getJSON("tiendas.geojson", function (data) {
+$.getJSON("GeoJson/tiendas.geojson", function (data) {
 	tiendas.addData(data)});	  
-$.getJSON("amigos.geojson", function (data) {
+$.getJSON("GeoJson/amigos.geojson", function (data) {
 	amigos.addData(data)});
 	  
 //Ordenar las capas en orden
