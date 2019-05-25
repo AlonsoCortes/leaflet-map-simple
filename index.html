@@ -100,11 +100,11 @@ var cdmx = L.geoJson(null, {
     style: function(feature){
       var fillColor,
           denpob = feature.properties.DenPob;
-      if ( denpob >  253.2304 ) fillColor = "#fde725";
-      else if ( denpob > 177.13 ) fillColor = "#5dc962";
-      else if ( denpob > 112.24 ) fillColor = "#20908d";
-      else if ( denpob > 51.76 ) fillColor = "#3a528b";
-      else if ( denpob > 0.03 ) fillColor = "#440154";
+      if ( denpob >  253.2304 ) fillColor = "#a50f15";
+      else if ( denpob > 177.13 ) fillColor = "#de2d26";
+      else if ( denpob > 112.24 ) fillColor = "#fb6a4a";
+      else if ( denpob > 51.76 ) fillColor = "#fcae91";
+      else if ( denpob > 0.03 ) fillColor = "#fee5d9";
       else fillColor = "#f7f7f7";  // no data
       return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .4 };
     },
