@@ -210,9 +210,43 @@ L.control.layers(baseMaps, overlays).addTo(map);
 //Agregar escala metrica
 L.control.scale().addTo(map);
 	  
-//Agregar leyenda	
+//Agregar leyenda
+function getColor(d) {
+	return d > 253 ? '#a50f15' :
+		d > 177  ? '#de2d26' :
+		d > 112  ? '#fb6a4a' :
+		d > 51  ? '##fcae91' :
+		d > 0   ? '#fee5d9' :;
+}
+	  
+/* Good way to create custom control */
+L.LegendControl = L.Control.extend({
+	onAdd: function (map) {
+		var div = L.DomUtil.create('div', 'info legend');
+		var grades = [0, 51, 112, 177, 253];
+		var labels = [];
+		var from;
+		var to;
 
+		for (var i = 0; i < grades.length; i++) {
+			from = grades[i];
+			to = grades[i + 1];
 
+		labels.push(
+			'<div><i style="background:' + getColor(from + 1) + '"></i> ' +
+			from + (to ? '&ndash;' + to : '+') + "</div>");
+			}
+
+		div.innerHTML = labels.join('');
+			return div;
+}
+});
+
+L.legendControl = function(options) {
+	return new L.LegendControl(options);
+};
+L.legendControl({position: 'bottomright'}).addTo(map);
+	  
   </script>
 </body>
 </html>
