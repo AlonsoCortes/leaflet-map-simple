@@ -1,5 +1,5 @@
-# Pruebas de Leaflet en Github
-Pruebas con leaflet
+# Leaflet 
+Mapa temático de la Ciudad de México
 
 ## Enlace al mapa
 
